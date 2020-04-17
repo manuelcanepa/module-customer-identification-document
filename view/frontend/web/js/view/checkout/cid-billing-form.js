@@ -16,12 +16,10 @@ define([
 
     return Component.extend({
         cidFields: ko.observable(null),
-        formDatax: formData.cidBillingFieldsData,
 
         initialize: function () {
             var self = this;
             this._super();
-            additionalValidators.registerValidator(formData);
             formData = this.source.get('cidBillingForm');
             var formDataCached = cartCache.get('cid-billing-form');
             if (formDataCached) {
@@ -50,11 +48,7 @@ define([
         },
 
         saveCidFields: function() {
-            //this.source.set('params.invalid', false);
-            //this.source.trigger('cidBillingForm.data.validate');
-
             if(this.source.get('cidBillingForm').billing_cid_type != '' && this.source.get('cidBillingForm').billing_cid_number != ''){
-            //if (!this.source.get('params.invalid')) {
                 var formData = this.source.get('cidBillingForm');
                 var quoteId = quote.getQuoteId();
                 var isCustomer = customer.isLoggedIn();
