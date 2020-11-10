@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote" resource="default">
+        <column xsi:type="text" name="shipping_cid_type" nullable="true" comment="Shipping Customer ID Type" />
+        <column xsi:type="text" name="shipping_cid_number" nullable="true" comment="Shipping Customer ID Number" />
+        <column xsi:type="text" name="billing_cid_type" nullable="true" comment="Billing Customer ID Type" />
+        <column xsi:type="text" name="billing_cid_number" nullable="true" comment="Billing Customer ID Number" />
+    </table>
+    <table name="sales_order" resource="default">
+        <column xsi:type="text" name="shipping_cid_type" nullable="true" comment="Shipping Customer ID Type" />
+        <column xsi:type="text" name="shipping_cid_number" nullable="true" comment="Shipping Customer ID Number" />
+        <column xsi:type="text" name="billing_cid_type" nullable="true" comment="Billing Customer ID Type" />
+        <column xsi:type="text" name="billing_cid_number" nullable="true" comment="Billing Customer ID Number" />
+    </table>
+    <table name="sales_invoice" resource="default">
+        <column xsi:type="text" name="shipping_cid_type" nullable="true" comment="Shipping Customer ID Type" />
+        <column xsi:type="text" name="shipping_cid_number" nullable="true" comment="Shipping Customer ID Number" />
+        <column xsi:type="text" name="billing_cid_type" nullable="true" comment="Billing Customer ID Type" />
+        <column xsi:type="text" name="billing_cid_number" nullable="true" comment="Billing Customer ID Number" />
+    </table>
+    <table name="sales_creditmemo" resource="default">
+        <column xsi:type="text" name="shipping_cid_type" nullable="true" comment="Shipping Customer ID Type" />
+        <column xsi:type="text" name="shipping_cid_number" nullable="true" comment="Shipping Customer ID Number" />
+        <column xsi:type="text" name="billing_cid_type" nullable="true" comment="Billing Customer ID Type" />
+        <column xsi:type="text" name="billing_cid_number" nullable="true" comment="Billing Customer ID Number" />
+    </table>
+</schema>
