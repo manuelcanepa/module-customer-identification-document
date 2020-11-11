@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Customer Identification Document
+ *
+ * @category   Mugar
+ * @package    Mugar_CustomerIdentificationDocument
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author     Mugar (https://www.mugar.io/)
+ *
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mugar_cid_types_form.mugar_cid_type_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Document Type Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Button\Back" />
+            <button name="delete" class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Button\CidType\Delete" />
+            <button name="reset" class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Button\Reset" />
+            <button name="save" class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Button\Save" />
+            <button name="save_and_continue" class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Button\SaveAndContinue" />
+        </buttons>
+        <namespace>mugar_cid_types_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>mugar_cid_types_form.mugar_cid_type_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mugar_cid_type_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="cid/types/save" />
+        </settings>
+        <dataProvider class="Mugar\CustomerIdentificationDocument\Model\CidType\DataProvider" name="mugar_cid_type_form_data_source">
+            <settings>
+                <requestFieldName>cid_type_id</requestFieldName>
+                <primaryFieldName>cid_type_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Document Type Information</label>
+        </settings>
+        <field name="cid_type_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">cid_type</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>cid_type_id</dataScope>
+            </settings>
+        </field>
+
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">cid_type</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+
+        <field name="active" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">cid_type</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Active</label>
+                <dataScope>active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

@@ -163,10 +163,9 @@ class Data extends AbstractHelper
         $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
         $options = $this->_types->toOptionArray();
         $systemOptionsSelected = explode(',', $this->getConfigValue(self::SHIPPING_DOCUMENT_TYPES, $storeId));
-
         foreach ($options as $option) {
             if (in_array($option['value'], $systemOptionsSelected)) {
-                $optionsSelected[$option['value']] = $option['label']->getText();
+                $optionsSelected[$option['value']] = $option['label'];
             }
         }
 
@@ -189,7 +188,7 @@ class Data extends AbstractHelper
 
         foreach ($options as $option) {
             if (in_array($option['value'], $systemOptionsSelected)) {
-                $optionsSelected[$option['value']] = $option['label']->getText();
+                $optionsSelected[$option['value']] = $option['label'];
             }
         }
 

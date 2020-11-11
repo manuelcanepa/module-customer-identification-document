@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Customer Identification Document
+ *
+ * @category   Mugar
+ * @package    Mugar_CustomerIdentificationDocument
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author     Mugar (https://www.mugar.io/)
+ *
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cid_types" resource="default" engine="innodb" comment="Customer ID Types">
+        <column xsi:type="smallint" name="cid_type_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Customer ID Type ID" />
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Customer ID Type Name" />
+        <column xsi:type="smallint" name="active" padding="2" nullable="false" default="1" comment="Customer ID Type Active" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Customer ID Type Created at" />
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Customer ID Type Updated At" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="cid_type_id" />
+        </constraint>
+    </table>
+</schema>
