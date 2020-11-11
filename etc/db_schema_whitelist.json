@@ -10,5 +10,37 @@
         "constraint": {
             "PRIMARY": true
         }
+    },
+    "quote": {
+        "column": {
+            "shipping_cid_type": true,
+            "shipping_cid_number": true,
+            "billing_cid_type": true,
+            "billing_cid_number": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "shipping_cid_type": true,
+            "shipping_cid_number": true,
+            "billing_cid_type": true,
+            "billing_cid_number": true
+        }
+    },
+    "sales_invoice": {
+        "column": {
+            "shipping_cid_type": true,
+            "shipping_cid_number": true,
+            "billing_cid_type": true,
+            "billing_cid_number": true
+        }
+    },
+    "sales_creditmemo": {
+        "column": {
+            "shipping_cid_type": true,
+            "shipping_cid_number": true,
+            "billing_cid_type": true,
+            "billing_cid_number": true
+        }
     }
 }
