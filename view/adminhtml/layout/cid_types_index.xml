@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Customer Identification Document
+ *
+ * @category   Mugar
+ * @package    Mugar_CustomerIdentificationDocument
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author     Mugar (https://www.mugar.io/)
+ *
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="mugar_cid_types_listing" />
+        </referenceContainer>
+    </body>
+</page>

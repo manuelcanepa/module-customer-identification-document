@@ -1,12 +1,61 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Customer Identification Document
+ *
+ * @category   Mugar
+ * @package    Mugar_CustomerIdentificationDocument
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author     Mugar (https://www.mugar.io/)
+ *
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Mugar\CustomerIdentificationDocument\Api\Data\CidFieldsInterface" type="Mugar\CustomerIdentificationDocument\Model\Data\CidFields" />
     <preference for="Mugar\CustomerIdentificationDocument\Api\CidFieldsRepositoryInterface" type="Mugar\CustomerIdentificationDocument\Model\CidFieldsRepository" />
     <preference for="Mugar\CustomerIdentificationDocument\Api\CidFieldsGuestRepositoryInterface" type="Mugar\CustomerIdentificationDocument\Model\CidFieldsGuestRepository" />
+    <preference for="Mugar\CustomerIdentificationDocument\Api\CidTypesRepositoryInterface" type="Mugar\CustomerIdentificationDocument\Model\CidTypeRepository" />
+    <preference for="Mugar\CustomerIdentificationDocument\Api\Data\CidTypeInterface" type="Mugar\CustomerIdentificationDocument\Model\CidType" />
+    <preference for="Mugar\CustomerIdentificationDocument\Api\Data\CidTypeSearchResultInterface" type="Magento\Framework\Api\SearchResults" />
     <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
-        <plugin name="cidConfiguration" type="Mugar\CustomerIdentificationDocument\Plugin\CidConfiguration"/>
+        <plugin name="cidConfiguration" type="Mugar\CustomerIdentificationDocument\Plugin\CidConfiguration" />
     </type>
     <type name="Magento\Checkout\Model\DefaultConfigProvider">
         <plugin name="cidLabels" type="Mugar\CustomerIdentificationDocument\Plugin\DefaultConfigProviderPlugin" sortOrder="1" />
     </type>
+    <type name="Magento\Backend\Controller\Adminhtml\Index\GlobalSearch">
+        <arguments>
+            <argument name="searchModules" xsi:type="array">
+                <item name="cid_types" xsi:type="array">
+                    <item name="class" xsi:type="string">Mugar\CustomerIdentificationDocument\Model\Search\CidType</item>
+                    <item name="acl" xsi:type="string">Mugar_CustomerIdentificationDocument::types</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mugar_cid_types_listing_data_source" xsi:type="string">MugarCustomerIdentificationDocumentCidTypesGridCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mugar\CustomerIdentificationDocument\Model\ResourceModel\CidType\Collection">
+        <arguments>
+            <argument name="model" xsi:type="string">Mugar\CustomerIdentificationDocument\Model\CidType</argument>
+            <argument name="resourceModel" xsi:type="string">Mugar\CustomerIdentificationDocument\Model\ResourceModel\CidType</argument>
+            <argument name="idFieldName" xsi:type="string">cid_type_id</argument>
+            <argument name="eventPrefix" xsi:type="string">mugar_cid_type_collection</argument>
+            <argument name="eventObject" xsi:type="string">cid_type_collection</argument>
+        </arguments>
+    </type>
+    <virtualType name="MugarCustomerIdentificationDocumentCidTypesGridCollection" type="Mugar\CustomerIdentificationDocument\Model\ResourceModel\CidType\Collection">
+        <arguments>
+            <argument name="model" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\Document</argument>
+            <argument name="resourceModel" xsi:type="string">Mugar\CustomerIdentificationDocument\Model\ResourceModel\CidType</argument>
+            <argument name="idFieldName" xsi:type="string">cid_type_id</argument>
+            <argument name="eventPrefix" xsi:type="string">mugar_cid_type_collection</argument>
+            <argument name="eventObject" xsi:type="string">cid_type_collection</argument>
+        </arguments>
+    </virtualType>
 </config>
