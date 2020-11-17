@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="content">
+        <referenceContainer name="order_additional_info">
             <block class="Magento\Framework\View\Element\Template" name="order_cid_fields" template="Mugar_CustomerIdentificationDocument::order/view/cid_fields.phtml" >
                 <arguments>
                     <argument name="cid_model" xsi:type="object">Mugar\CustomerIdentificationDocument\ViewModel\CidModel</argument>
