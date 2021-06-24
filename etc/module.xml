@@ -1,8 +1,20 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Customer Identification Document
+ *
+ * @category   Mugar
+ * @package    Mugar_CustomerIdentificationDocument
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author     Mugar (https://www.mugar.io/)
+ *
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Mugar_CustomerIdentificationDocument" setup_version="1.0.0">
         <sequence>
-            <module name="Magento_Sales"/>
+            <module name="Magento_Customer" />
+            <module name="Magento_Sales" />
         </sequence>
     </module>
 </config>

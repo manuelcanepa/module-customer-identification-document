@@ -1,4 +1,16 @@
 {
+    "cid_types": {
+        "column": {
+            "cid_type_id": true,
+            "name": true,
+            "active": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
     "quote": {
         "column": {
             "shipping_cid_type": true,

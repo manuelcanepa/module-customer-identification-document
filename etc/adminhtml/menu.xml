@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Customer Identification Document
+ *
+ * @category   Mugar
+ * @package    Mugar_CustomerIdentificationDocument
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author     Mugar (https://www.mugar.io/)
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mugar_CustomerIdentificationDocument::general" title="Customer Identification Document" translate="title" module="Mugar_CustomerIdentificationDocument" sortOrder="60" dependsOnModule="Mugar_CustomerIdentificationDocument" resource="Mugar_CustomerIdentificationDocument::general" parent="Magento_Customer::customer" />
+        <add id="Mugar_CustomerIdentificationDocument::types" title="Document Types" module="Mugar_CustomerIdentificationDocument" sortOrder="20" resource="Mugar_CustomerIdentificationDocument::types" parent="Mugar_CustomerIdentificationDocument::general" action="cid/types" />
+    </menu>
+</config>
