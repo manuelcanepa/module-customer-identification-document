@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="content">
+            <referenceBlock name="order_content">
+                <referenceBlock name="order_create_form">
+                    <referenceBlock name="data">
+                        <block class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Order\Create"
+                               template="Mugar_CustomerIdentificationDocument::order/create/cid_fields.phtml"
+                               name="shippingcidfields">
+                            <arguments>
+                                <argument name="cid_type" xsi:type="string">shipping</argument>
+                            </arguments>
+                        </block>
+                        <block class="Mugar\CustomerIdentificationDocument\Block\Adminhtml\Order\Create"
+                               template="Mugar_CustomerIdentificationDocument::order/create/cid_fields.phtml"
+                               name="billingcidfields">
+                            <arguments>
+                                <argument name="cid_type" xsi:type="string">billing</argument>
+                            </arguments>
+                        </block>
+                    </referenceBlock>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceBlock>
+    </body>
+</page>

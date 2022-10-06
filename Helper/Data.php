@@ -39,6 +39,8 @@ class Data extends AbstractHelper
     const BILLING_LABEL = 'checkout/cid/billing_label';
     const SHIPPING_DESCRIPTION = 'checkout/cid/shipping_description';
     const BILLING_DESCRIPTION = 'checkout/cid/billing_description';
+    const BLOCK_TYPE_BILLING = 'billing';
+    const BLOCK_TYPE_SHIPPING = 'shipping';
 
     /**
      * Magento\Framework\App\Config\ScopeConfigInterface
@@ -56,8 +58,9 @@ class Data extends AbstractHelper
 
     /**
      * Data constructor.
-     * @param Context $context
-     * @param ScopeConfigInterface $scopeConfigInterface
+     *
+     * @param Context               $context
+     * @param ScopeConfigInterface  $scopeConfigInterface
      * @param StoreManagerInterface $storeManagerInterface
      */
     public function __construct(
@@ -76,8 +79,9 @@ class Data extends AbstractHelper
      * Check if shipping is enabled
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function isShippingEnabled($store = null)
     {
@@ -89,8 +93,9 @@ class Data extends AbstractHelper
      * Get shipping label
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getShippingLabel($store = null)
     {
@@ -102,10 +107,11 @@ class Data extends AbstractHelper
      * Get shipping description
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
-    public function getShippingDescription($store =  null)
+    public function getShippingDescription($store = null)
     {
         $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
         return $this->getConfigValue(self::SHIPPING_DESCRIPTION, $storeId);
@@ -115,8 +121,9 @@ class Data extends AbstractHelper
      * Get billing label
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getBillingLabel($store = null)
     {
@@ -128,8 +135,9 @@ class Data extends AbstractHelper
      * Get billing description
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getBillingDescription($store = null)
     {
@@ -141,8 +149,9 @@ class Data extends AbstractHelper
      * Check if billing is enabled
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function isBillingEnabled($store = null)
     {
@@ -154,8 +163,9 @@ class Data extends AbstractHelper
      * get Shipping Document Types
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getShippingDocumentTypes($store = null)
     {
@@ -176,8 +186,9 @@ class Data extends AbstractHelper
      * get Shipping Document Types
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getBillingDocumentTypes($store = null)
     {
@@ -198,9 +209,10 @@ class Data extends AbstractHelper
     /**
      * Get configuration value
      *
-     * @param $path
+     * @param      $path
      * @param null $storeId
      * @param null $scope
+     *
      * @return mixed
      */
     public function getConfigValue($path, $storeId = null, $scope = null)
@@ -213,8 +225,8 @@ class Data extends AbstractHelper
     /**
      * Get store identifier
      *
-     * @return  int
      * @throws NoSuchEntityException
+     * @return  int
      */
     public function getStoreId()
     {

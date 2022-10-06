@@ -17,7 +17,6 @@ use Mugar\CustomerIdentificationDocument\Api\Data\CidFieldsInterface;
 
 class AddCidFieldsToOrder implements ObserverInterface
 {
-
     public function execute(Observer $observer)
     {
         $order = $observer->getEvent()->getOrder();
