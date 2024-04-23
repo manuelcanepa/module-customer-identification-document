@@ -74,6 +74,7 @@ class CidTypeRepository implements CidTypesRepositoryInterface
      * @var CidTypeSearchResultInterface
      */
     protected $searchResultsFactory;
+    protected $collectionFactory;
 
     /**
      * constructor
