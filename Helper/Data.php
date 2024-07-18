@@ -31,15 +31,14 @@ use Mugar\CustomerIdentificationDocument\Model\Config\Source\Types;
  */
 class Data extends AbstractHelper
 {
-    const SHIPPING_ENABLED = 'checkout/cid/shipping_enabled';
-    const BILLING_ENABLED = 'checkout/cid/billing_enabled';
-    const SHIPPING_DOCUMENT_TYPES = 'checkout/cid/shipping_types';
+    const BILLING_DESCRIPTION = 'checkout/cid/billing_description';
     const BILLING_DOCUMENT_TYPES = 'checkout/cid/billing_types';
-    const SHIPPING_LABEL = 'checkout/cid/shipping_label';
+    const BILLING_ENABLED = 'checkout/cid/billing_enabled';
     const BILLING_LABEL = 'checkout/cid/billing_label';
     const SHIPPING_DESCRIPTION = 'checkout/cid/shipping_description';
-    const BILLING_DESCRIPTION = 'checkout/cid/billing_description';
-
+    const SHIPPING_DOCUMENT_TYPES = 'checkout/cid/shipping_types';
+    const SHIPPING_ENABLED = 'checkout/cid/shipping_enabled';
+    const SHIPPING_LABEL = 'checkout/cid/shipping_label';
     /**
      * Magento\Framework\App\Config\ScopeConfigInterface
      * @var ScopeConfigInterface
@@ -56,6 +55,7 @@ class Data extends AbstractHelper
 
     /**
      * Data constructor.
+     *
      * @param Context $context
      * @param ScopeConfigInterface $scopeConfigInterface
      * @param StoreManagerInterface $storeManagerInterface
@@ -73,63 +73,12 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Check if shipping is enabled
-     *
-     * @param null $store
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
-    public function isShippingEnabled($store = null)
-    {
-        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
-        return $this->getConfigValue(self::SHIPPING_ENABLED, $storeId);
-    }
-
-    /**
-     * Get shipping label
-     *
-     * @param null $store
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
-    public function getShippingLabel($store = null)
-    {
-        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
-        return $this->getConfigValue(self::SHIPPING_LABEL, $storeId);
-    }
-
-    /**
-     * Get shipping description
-     *
-     * @param null $store
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
-    public function getShippingDescription($store =  null)
-    {
-        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
-        return $this->getConfigValue(self::SHIPPING_DESCRIPTION, $storeId);
-    }
-
-    /**
-     * Get billing label
-     *
-     * @param null $store
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
-    public function getBillingLabel($store = null)
-    {
-        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
-        return $this->getConfigValue(self::BILLING_LABEL, $storeId);
-    }
-
-    /**
      * Get billing description
      *
      * @param null $store
-     * @return mixed
+     *
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getBillingDescription($store = null)
     {
@@ -138,53 +87,19 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Check if billing is enabled
-     *
-     * @param null $store
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
-    public function isBillingEnabled($store = null)
-    {
-        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
-        return $this->getConfigValue(self::BILLING_ENABLED, $storeId);
-    }
-
-    /**
      * get Shipping Document Types
      *
      * @param null $store
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
-    public function getShippingDocumentTypes($store = null)
-    {
-        $optionsSelected = [];
-        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
-        $options = $this->_types->toOptionArray();
-        $systemOptionsSelected = explode(',', $this->getConfigValue(self::SHIPPING_DOCUMENT_TYPES, $storeId));
-        foreach ($options as $option) {
-            if (in_array($option['value'], $systemOptionsSelected)) {
-                $optionsSelected[$option['value']] = $option['label'];
-            }
-        }
-
-        return $optionsSelected;
-    }
-
-    /**
-     * get Shipping Document Types
      *
-     * @param null $store
-     * @return mixed
      * @throws NoSuchEntityException
+     * @return mixed
      */
     public function getBillingDocumentTypes($store = null)
     {
         $optionsSelected = [];
         $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
         $options = $this->_types->toOptionArray();
-        $systemOptionsSelected = explode(',', $this->getConfigValue(self::BILLING_DOCUMENT_TYPES, $storeId));
+        $systemOptionsSelected = explode(',', $this->getConfigValue(self::BILLING_DOCUMENT_TYPES, $storeId) ?? '');
 
         foreach ($options as $option) {
             if (in_array($option['value'], $systemOptionsSelected)) {
@@ -193,6 +108,20 @@ class Data extends AbstractHelper
         }
 
         return $optionsSelected;
+    }
+
+    /**
+     * Get billing label
+     *
+     * @param null $store
+     *
+     * @throws NoSuchEntityException
+     * @return mixed
+     */
+    public function getBillingLabel($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::BILLING_LABEL, $storeId);
     }
 
     /**
@@ -201,6 +130,7 @@ class Data extends AbstractHelper
      * @param $path
      * @param null $storeId
      * @param null $scope
+     *
      * @return mixed
      */
     public function getConfigValue($path, $storeId = null, $scope = null)
@@ -211,13 +141,92 @@ class Data extends AbstractHelper
     }
 
     /**
+     * Get shipping description
+     *
+     * @param null $store
+     *
+     * @throws NoSuchEntityException
+     * @return mixed
+     */
+    public function getShippingDescription($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::SHIPPING_DESCRIPTION, $storeId);
+    }
+
+    /**
+     * get Shipping Document Types
+     *
+     * @param null $store
+     *
+     * @throws NoSuchEntityException
+     * @return mixed
+     */
+    public function getShippingDocumentTypes($store = null)
+    {
+        $optionsSelected = [];
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        $options = $this->_types->toOptionArray();
+        $systemOptionsSelected = explode(',', $this->getConfigValue(self::SHIPPING_DOCUMENT_TYPES, $storeId) ?? '');
+        foreach ($options as $option) {
+            if (in_array($option['value'], $systemOptionsSelected)) {
+                $optionsSelected[$option['value']] = $option['label'];
+            }
+        }
+
+        return $optionsSelected;
+    }
+
+    /**
+     * Get shipping label
+     *
+     * @param null $store
+     *
+     * @throws NoSuchEntityException
+     * @return mixed
+     */
+    public function getShippingLabel($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::SHIPPING_LABEL, $storeId);
+    }
+
+    /**
      * Get store identifier
      *
-     * @return  int
      * @throws NoSuchEntityException
+     * @return  int
      */
     public function getStoreId()
     {
         return $this->_storeManager->getStore()->getId();
+    }
+
+    /**
+     * Check if billing is enabled
+     *
+     * @param null $store
+     *
+     * @throws NoSuchEntityException
+     * @return mixed
+     */
+    public function isBillingEnabled($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::BILLING_ENABLED, $storeId);
+    }
+
+    /**
+     * Check if shipping is enabled
+     *
+     * @param null $store
+     *
+     * @throws NoSuchEntityException
+     * @return mixed
+     */
+    public function isShippingEnabled($store = null)
+    {
+        $storeId = is_null($store) ? $this->getStoreId() : $store->getId();
+        return $this->getConfigValue(self::SHIPPING_ENABLED, $storeId);
     }
 }
