@@ -45,7 +45,7 @@ interface CidFieldsInterface
      * @return string|null
      */
     public function getBillingCidNumber();
-    
+
     /**
      * Set shipping cid type
      *
@@ -53,8 +53,8 @@ interface CidFieldsInterface
      *
      * @return CidFieldsInterface
      */
-    public function setShippingCidType(string $shippingCidType = null);
-    
+    public function setShippingCidType(?string $shippingCidType = null);
+
     /**
      * Set shipping cid number
      *
@@ -62,8 +62,8 @@ interface CidFieldsInterface
      *
      * @return CidFieldsInterface
      */
-    public function setShippingCidNumber(string $shippingCidNumber = null);
-    
+    public function setShippingCidNumber(?string $shippingCidNumber = null);
+
     /**
      * Set billing cid type
      *
@@ -71,8 +71,8 @@ interface CidFieldsInterface
      *
      * @return CidFieldsInterface
      */
-    public function setBillingCidType(string $billingCidType = null);
-    
+    public function setBillingCidType(?string $billingCidType = null);
+
     /**
      * Set billing cid number
      *
@@ -80,5 +80,5 @@ interface CidFieldsInterface
      *
      * @return CidFieldsInterface
      */
-    public function setBillingCidNumber(string $billingCidNumber = null);
+    public function setBillingCidNumber(?string $billingCidNumber = null);
 }

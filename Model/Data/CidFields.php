@@ -37,22 +37,22 @@ class CidFields extends AbstractExtensibleObject implements CidFieldsInterface
         return $this->_get(self::BILLING_CID_NUMBER);
     }
 
-    public function setShippingCidType(string $shippingCidType = null)
+    public function setShippingCidType(?string $shippingCidType = null)
     {
         return $this->setData(self::SHIPPING_CID_TYPE, $shippingCidType);
     }
 
-    public function setShippingCidNumber(string $shippingCidNumber = null)
+    public function setShippingCidNumber(?string $shippingCidNumber = null)
     {
         return $this->setData(self::SHIPPING_CID_NUMBER, $shippingCidNumber);
     }
 
-    public function setBillingCidType(string $billingCidType = null)
+    public function setBillingCidType(?string $billingCidType = null)
     {
         return $this->setData(self::BILLING_CID_TYPE, $billingCidType);
     }
 
-    public function setBillingCidNumber(string $billingCidNumber = null)
+    public function setBillingCidNumber(?string $billingCidNumber = null)
     {
         return $this->setData(self::BILLING_CID_NUMBER, $billingCidNumber);
     }
